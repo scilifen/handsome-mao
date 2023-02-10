@@ -2,20 +2,21 @@
 import { useExaminerStore } from "@/stores/examiner";
 import { ref } from "vue";
 import type { ButtonType } from "element-plus";
+const examiner = useExaminerStore();
+
 // refs of Mistake Page only
 const passFlag = ref(false);
 const queList = ref([] as number[]);
 queList.value = JSON.parse(localStorage.getItem("que_list") as string);
 if (queList.value == undefined || queList.value.length == 0) {
 	queList.value = [];
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < examiner.size; i++) {
 		queList.value.push(i);
 	}
 }
 const index = ref(queList.value[0]);
 
 // refs
-const examiner = useExaminerStore();
 const question = ref(examiner.getQuestion(index.value) as string);
 const choices = ref(examiner.getChoices(index.value) as string[]);
 const answers = ref(examiner.getAnswers(index.value) as number[]);

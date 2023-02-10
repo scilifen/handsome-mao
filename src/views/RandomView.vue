@@ -4,7 +4,7 @@ import { ref } from "vue";
 import type { ButtonType } from "element-plus";
 const examiner = useExaminerStore();
 
-const randomList = getRandomNum(100, 619);
+const randomList = getRandomNum(100, examiner.size);
 const index = ref(0);
 const question = ref(examiner.getQuestion(randomList[index.value]) as string);
 const choices = ref(examiner.getChoices(randomList[index.value]) as string[]);

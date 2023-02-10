@@ -6,6 +6,7 @@ export const useExaminerStore = defineStore("examiner", {
 	state: () => {
 		return {
 			bank: bankdata,
+			size: bankdata.length,
 		};
 	},
 	actions: {

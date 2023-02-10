@@ -12,7 +12,7 @@ const choices = ref(examiner.getChoices(index.value) as string[]);
 const answers = ref(examiner.getAnswers(index.value) as number[]);
 
 const nextQues = () => {
-	index.value < 619 ? index.value++ : (index.value = 619);
+	index.value < examiner.size ? index.value++ : (index.value = examiner.size);
 	localStorage.setItem("index", index.value.toString());
 	question.value = examiner.getQuestion(index.value);
 	choices.value = examiner.getChoices(index.value);
