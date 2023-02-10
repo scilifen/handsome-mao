@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useExaminerStore } from "@/stores/examiner";
 import { ref } from "vue";
+import type { ButtonType } from "element-plus";
 const examiner = useExaminerStore();
 
 const randomList = getRandomNum(100, 619);
@@ -64,17 +65,18 @@ function getRandomNum(needNum: number, allNum: number) {
 </script>
 
 <template>
-	<div class="mx-[8px] font-bold text-center my-[20px]">
+	<div class="mx-[8px] font-semibold text-center my-[20px] mt-4">
 		现在是第{{ index + 1 }}题，冲冲冲！\^o^/
 	</div>
-	<div class="mx-[16px] mb-[20px] text-l">{{ question }}</div>
-
-	<div class="flex flex-col space-y-14 content-around">
+	<div class="mx-[16px] mb-[20px] text-l text-center font-bold mt-12">
+		<div class="text-left">{{ question }}</div>
+	</div>
+	<div class="flex flex-col space-y-8 content-around mx-10 mt-8">
 		<el-button
+			class="choice"
 			v-for="(choice, index) in choices"
 			@click="setAns(index)"
-			:type="choiceType[index] as string"
-			text
+			:type="(choiceType[index] as ButtonType)"
 		>
 			<div class="text-lg break-words whitespace-normal text-left">
 				{{ choice }}
