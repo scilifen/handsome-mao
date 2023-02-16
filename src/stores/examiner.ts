@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
-import bankdata from "../assets/data.json";
+import bankdata from "../assets/store.json";
 
 export const useExaminerStore = defineStore("examiner", {
 	state: () => {
