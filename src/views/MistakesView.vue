@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useExaminerStore } from "@/stores/examiner";
-import { ref } from "vue";
 import type { ButtonType } from "element-plus";
+import { ref } from "vue";
 const examiner = useExaminerStore();
 
 // refs of Mistake Page only
@@ -40,9 +40,12 @@ function check() {
 	let refer = new Array(len).fill(false);
 	answers.value.forEach((element) => {
 		refer[element] = true;
-		all = results.value[element] && all;
 	});
+	// console.log(!results.value[1]);
 	for (let i = 0; i < len; i++) {
+		if (!results.value[i]) results.value[i] = false;
+		all = results.value[i] === refer[i] && all;
+		// console.log(all);
 		if (refer[i]) {
 			resultsTypes.value[i] = "success";
 		} else if (!refer[i] && results.value[i]) {

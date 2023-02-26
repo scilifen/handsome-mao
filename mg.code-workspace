@@ -4,5 +4,9 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"volar.doctor.checkVueTsc": true,
+		"volar.takeOverMode.extension": "vue.vscode-typescript-vue-plugin",
+		"typescript.tsdk": "node_modules/typescript/lib"
+	}
 }
